@@ -23,7 +23,7 @@ $DB_USER = 'root';
 $DB_PASS = '';
 $DB_NAME = 'restaurant_single';
 
-$conn = new mysqli($DB_HOST, $DB_USER, $DB_PASS);
+$conn = new mysqli($DB_HOST, $DB_USER, $DB_PASS, $DB_NAME);
 if ($conn->connect_error) die("DB Conn Error: " . $conn->connect_error);
 
 // Create DB if missing
@@ -361,7 +361,6 @@ body{
           <a class="btn" href="#order">Quick Order</a>
         </div>
       </div>
-      <div class="visual"></div>
     </div>
 
     <div class="section">
@@ -720,37 +719,37 @@ body{
         <h3>Main Courses</h3>
         <div class="menu-grid">
           <div class="menu-card">
-           <imgsrc="https://assets.bonappetit.com/photos/5b919cb83d923e31d08fed17/4:3/w_2666,h_2000,c_limit/basically-burger-1.jpg" alt="Burger">
+           <img src="https://assets.bonappetit.com/photos/5b919cb83d923e31d08fed17/4:3/w_2666,h_2000,c_limit/basically-burger-1.jpg" alt="Burger">
                 <h4>Burger</h4>
                 <p>Juicy beef patty, cheese & fresh veggies</p>
                 <span class="price">₹199</span>
             </div>
 
             <div class="menu-card">
-                <img src="https://i.imgur.com/8uVxhLS.jpeg" alt="Pizza">
+                <img src="https://www.tillamook.com/_next/image?url=https%3A%2F%2Fimages.ctfassets.net%2Fj8tkpy1gjhi5%2F5OvVmigx6VIUsyoKz1EHUs%2Fb8173b7dcfbd6da341ce11bcebfa86ea%2FSalami-pizza-hero.jpg&w=1024&q=75" alt="Pizza">
                 <h4>Pizza</h4>
                 <p>Wood-fired cheese pizza with toppings</p>
                 <span class="price">₹299</span>
             </div>
 
             <div class="menu-card">
-                <img src="https://i.imgur.com/26zZJYp.jpeg" alt="Fried Chicken">
-                <h4>Fried Chicken</h4>
-                <p>Crispy & golden deep-fried chicken</p>
+                <img src="https://images.rawpixel.com/image_png_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDI0LTA4L3Jhd3BpeGVsb2ZmaWNlMl9waG90b19vZl9leHBsb2RpbmdfYmFjb25fZnJpZWRfcmljZV9faW5fc3R5bGVfb18xYjllOWMyOC00ZDFiLTRiNDQtYmNjMy0yMGQ3ZjY2NWMzMmMucG5n.png" alt="Fried Rice">
+                <h4>Fried Rice</h4>
+                <p>Crispy fried Rice</p>
                 <span class="price">₹249</span>
             </div>
 
             <div class="menu-card">
-                <img src="https://i.imgur.com/dk8yX1O.jpeg" alt="Lasagna">
+                <img src="https://www.tasteofhome.com/wp-content/uploads/2025/07/Best-Lasagna_EXPS_ATBBZ25_36333_DR_07_01_2b.jpg" alt="Lasagna">
                 <h4>Lasagna</h4>
                 <p>Italian layered pasta with cheese</p>
                 <span class="price">₹349</span>
             </div>
 
             <div class="menu-card">
-                <img src="https://i.imgur.com/d1kKq8V.jpeg" alt="Steak">
-                <h4>Steak</h4>
-                <p>Grilled beef steak with garlic butter</p>
+                <img src="https://i.ytimg.com/vi/dNhgr9w7Y6g/maxresdefault.jpg" alt="Fried Momos">
+                <h4>Fried Momos</h4>
+                <p>Crispy golden fried momos</p>
                 <span class="price">₹599</span>
             </div>
 
@@ -763,21 +762,21 @@ body{
         <div class="menu-grid">
 
             <div class="menu-card">
-                <img src="https://i.imgur.com/OWf0cUU.jpeg" alt="Fries">
+                <img src="https://www.hindustantimes.com/ht-img/img/2025/07/11/1600x900/french_fries_1752214461274_1752214461432.jpg" alt="Fries">
                 <h4>Fries</h4>
                 <p>Golden crispy french fries</p>
                 <span class="price">₹99</span>
             </div>
 
             <div class="menu-card">
-                <img src="https://i.imgur.com/tw0mc2Q.jpeg" alt="Salad">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6ZAAgM6GMo9CAFZ74KOIc-hkd36ADUSqiiA&s9" alt="Salad">
                 <h4>Salad</h4>
                 <p>Fresh and healthy vegetable salad</p>
                 <span class="price">₹149</span>
             </div>
 
             <div class="menu-card">
-                <img src="https://i.imgur.com/HQkgK3H.jpeg" alt="Mashed Potatoes">
+                <img src="https://www.allrecipes.com/thmb/8pkbFP258H24axyBlRbGtWS-Vnk=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/24771-basic-mashed-potatoes-mfs318-ed832ab37551471cba0997410217d4c5.jpg" alt="Mashed Potatoes">
                 <h4>Mashed Potatoes</h4>
                 <p>Creamy smooth mashed potatoes</p>
                 <span class="price">₹129</span>
@@ -792,21 +791,21 @@ body{
         <div class="menu-grid">
 
             <div class="menu-card">
-                <img src="https://i.imgur.com/V2NeGZF.jpeg" alt="Cake">
+                <img src="https://inbloombakery.com/wp-content/uploads/2022/04/chocolate-drip-cake-featured-image.jpg" alt="Cake">
                 <h4>Cake</h4>
                 <p>Soft chocolate birthday cake</p>
                 <span class="price">₹199</span>
             </div>
 
             <div class="menu-card">
-                <img src="https://i.imgur.com/Rt2Yk8L.jpeg" alt="Sorbet">
+                <img src="https://www.simplyorganic.com/media/wysiwyg/tmp/simply-oragnic-No-Churn-Mixed-Berry-Sorbet-1080x1080-thumbnail.jpg" alt="Sorbet">
                 <h4>Sorbet</h4>
                 <p>Cold fruity sorbet dessert</p>
                 <span class="price">₹149</span>
             </div>
 
             <div class="menu-card">
-                <img src="https://i.imgur.com/9XiQ2LX.jpeg" alt="Brownies">
+                <img src="https://www.nestleprofessional.in/sites/default/files/2021-08/Brownies.jpg" alt="Brownies">
                 <h4>Brownies</h4>
                 <p>Warm chocolate brownies</p>
                 <span class="price">₹179</span>
@@ -821,21 +820,21 @@ body{
         <div class="menu-grid">
 
             <div class="menu-card">
-                <img src="https://i.imgur.com/lGzvQZG.jpeg" alt="Coffee">
+                <img src="https://corkframes.com/cdn/shop/articles/Corkframes_Coffee_Guide_520x500_422ebe38-4cfa-42b5-a266-b9bfecabaf30.jpg?v=1734598727" alt="Coffee">
                 <h4>Coffee</h4>
                 <p>Fresh brewed hot coffee</p>
                 <span class="price">₹89</span>
             </div>
 
             <div class="menu-card">
-                <img src="https://i.imgur.com/y5tZFNC.jpeg" alt="Tea">
+                <img src="https://desifreshfoods.com/wp-content/uploads/2023/04/Indian-Tea-Recipes1.jpg" alt="Tea">
                 <h4>Tea</h4>
                 <p>Masala chai with milk</p>
                 <span class="price">₹69</span>
             </div>
 
             <div class="menu-card">
-                <img src="https://i.imgur.com/7owy5EI.jpeg" alt="Soda">
+                <img src="https://static.vecteezy.com/system/resources/thumbnails/040/175/328/small/ai-generated-pictures-of-delicious-and-beautiful-drinks-photo.jpg" alt="Soda">
                 <h4>Soda</h4>
                 <p>Chilled soft drink</p>
                 <span class="price">₹49</span>
@@ -1033,3 +1032,5 @@ document.addEventListener('DOMContentLoaded', function(){
 
 </body>
 </html>
+
+
