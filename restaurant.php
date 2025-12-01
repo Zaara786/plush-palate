@@ -37,7 +37,7 @@ CREATE TABLE IF NOT EXISTS admins (
     id INT AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(100) UNIQUE NOT NULL,
     password VARCHAR(255) NOT NULL,
-    fullname VARCHAR(255) DEFAULT 'Administrator',
+    fullname VARCHAR(255) ,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB;
 ");
@@ -81,8 +81,8 @@ CREATE TABLE IF NOT EXISTS orders (
 // -------------------- CREATE DEFAULT ADMIN IF NONE --------------------
 $checkAdmin = $conn->query("SELECT COUNT(*) as c FROM admins")->fetch_assoc()['c'];
 if ($checkAdmin == 0) {
-    $default_user = 'admin';
-    $default_pass = 'admin123'; // CHANGE after first login!
+    $default_user = ' ';
+    $default_pass = ' '; 
     $hash = password_hash($default_pass, PASSWORD_DEFAULT);
     $stmt = $conn->prepare("INSERT INTO admins (username,password,fullname) VALUES (?,?,?)");
     $fulln = 'Restaurant Admin';
@@ -90,6 +90,7 @@ if ($checkAdmin == 0) {
     $stmt->execute();
     $stmt->close();
 }
+
 
 // -------------------- SIMPLE ROUTING --------------------
 $page = $_GET['page'] ?? 'home';
@@ -197,7 +198,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['place_order'])) {
     $item_id = intval($_POST['item_id']);
     $qty = intval($_POST['quantity']);
     $table_no = $_POST['table_no'];
-    // get item snapshot
     $stmt = $conn->prepare("SELECT name FROM menu_items WHERE id = ?");
     $stmt->bind_param("i",$item_id);
     $stmt->execute();
@@ -311,13 +311,14 @@ body{
       <div class="logo">RS</div>
       <div>
         <div class="title">Restaurant System</div>
-        <div class="small-muted">Attractive homepage • Menu • Admin dashboard • Single file</div>
+        <div class="small-muted"> • Menu • Admin dashboard </div>
       </div>
     </div>
 
     <div class="top-actions">
       <?php if (is_logged()): ?>
-        <div class="kv">Welcome, <?php echo h($_SESSION['admin_name']); ?></div>
+        <div class="kv">Welcome,
+ <?php echo h($_SESSION['admin_name']); ?></div>
         <a class="btn" href="?page=dashboard">Dashboard</a>
         <a class="btn" href="?page=dashboard&tab=menu">Menu</a>
         <a class="btn" href="?logout=1" style="background:transparent;color:var(--muted)">Logout</a>
@@ -340,7 +341,13 @@ body{
           <div class="searchbar" style="max-width:520px;flex:1">
             <input id="searchInput" type="search" placeholder="Search food, e.g. biryani, pizza..." oninput="filterMenu()" />
             <select id="categorySelect" onchange="filterMenu()">
-              <option value="">All categories</option>
+              <option value="Burger">Burger</option>
+              <option value="Pizza">Pizza</option>
+              <option value="Fried Rice">Fried Rice</option>
+              <option value="Fried Momos">Fried Momos</option>
+              <option value="Fries">Fries</option>
+
+
               <?php foreach (get_categories($conn) as $cat): ?>
                 <option value="<?php echo h($cat); ?>"><?php echo h($cat); ?></option>
               <?php endforeach; ?>
@@ -420,8 +427,8 @@ body{
                 <?php
                   // show only available items
                   $r = $conn->query("SELECT id,name,price FROM menu_items WHERE is_available=1 ORDER BY name ASC");
-                  while($m = $r->fetch_assoc()){
-                    echo '<option value="'.intval($m['id']).'">'.h($m['name']).' — ₹'.number_format($m['price'],2).'</option>';
+               while($m = $r->fetch_assoc()){
+    echo '<option value="'.intval($m['id']).'">'.h($m['name']).'₹'.number_format($m['price'],2).'</option>';
                   }
                 ?>
               </select>
@@ -1032,5 +1039,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
 </body>
 </html>
+
+
 
 
